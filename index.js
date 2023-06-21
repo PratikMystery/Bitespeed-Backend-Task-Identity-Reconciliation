@@ -5,16 +5,21 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.get("/", (req, res) => {
-    res.send("hello world");
+app.post("/identity", async (req, res) => {
+    const [email, phoneNumber] = [req.body.email, req.body.phoneNumber];
+    if (email === null && phoneNumber === null) {
+        console.log("invalid request");
+        return res.status(400).json({});
+    }
+    try {
+        const pcid = await util.handleRequest(email, phoneNumber);
+        const data = await util.generateResponse(pcid);
+        res.status(200).json(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
 });
-app.get("/test", async (req, res) => {
-    console.log("request recieved");
-    const data = await util.getEmployees();
-    console.log(data);
-    res.send(data);
-});
-
 app.listen(port, () => {
     console.log(`server listening on port ${port}`);
 });
