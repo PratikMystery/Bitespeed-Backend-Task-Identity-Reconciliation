@@ -23,7 +23,7 @@ class Util {
     }
 
     // Here we change a primary to secondary
-    // We also update all the contacts that are linked to the primary in context
+    // We also update all the contacts that are linked to the old pcid
     async updateContactDetails(new_pcid, old_pcid) {
         try {
             await Contact.update(
