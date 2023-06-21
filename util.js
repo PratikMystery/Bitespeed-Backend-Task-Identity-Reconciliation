@@ -3,6 +3,17 @@ const Contact = require("./contact");
 Contact.sync({ force: true });
 
 class Util {
+    // fetching all contacts
+    async fetchAllContacts() {
+        try {
+            const contacts = await Contact.findAll();
+            return contacts;
+        } catch (err) {
+            console.log("Error fetching contacts");
+            throw err;
+        }
+    }
+
     // fetching contact based on the filter in data
     // data : {email: "abc@.."} or {phoneNumber: "123.."}
     async fetchMatchingContact(data) {

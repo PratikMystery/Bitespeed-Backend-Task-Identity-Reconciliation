@@ -5,6 +5,17 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.get("/contacts", async (req, res) => {
+    try {
+        const contacts = await util.fetchAllContacts();
+        const formattedJson = JSON.stringify(contacts, null, 2);
+        res.setHeader("Content-Type", "application/json");
+        res.send(formattedJson);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 app.post("/identity", async (req, res) => {
     const [email, phoneNumber] = [req.body.email, req.body.phoneNumber];
     if (email === null && phoneNumber === null) {
