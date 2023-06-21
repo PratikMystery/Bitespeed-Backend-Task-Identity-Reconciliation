@@ -13,11 +13,11 @@ To run the Node.js app using Docker, follow these steps:
 
 1. Clone the repository:
 
-`git clone https://github.com/pratikmystery/Bitespeed-Backend-Task-Identity-Reconciliation.git`
+`git clone https://github.com/pratikmystery/bitespeed-task.git`
 
 2. Navigate to the project directory:
 
-`cd dir`
+`cd bitespeed-task`
 
 3. Build the Docker image:
 
