@@ -12,9 +12,11 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
+RUN chmod +x wait-for-it.sh
+RUN chmod +x entrypoint.sh
 
 # Expose the port your Node.js app is listening on (if necessary)
 EXPOSE 3000
 
-# Define the command to start your Node.js app
-CMD [ "node", "index.js" ]
+# Set the entrypoint for the container
+CMD ["./entrypoint.sh"]

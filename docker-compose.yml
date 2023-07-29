@@ -6,9 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
-    depends_on:
-      db:
-        condition: service_started
 
   db:
     image: mysql:5.7.24
