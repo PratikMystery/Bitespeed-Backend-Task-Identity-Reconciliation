@@ -1,0 +1,30 @@
+services:
+  - name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env:
+      - key: PORT
+        value: "3000"
+
+  - name: db
+    image: mysql:5.7.24
+    env:
+      - key: MYSQL_DATABASE
+        value: test
+      - key: MYSQL_USER
+        value: user
+      - key: MYSQL_PASSWORD
+        value: secret
+      - key: MYSQL_ROOT_PASSWORD
+        value: root
+    ports:
+      - number: 3306
+
+web:
+  - path: app
+    port: $PORT
+
+databases:
+  - name: db
+    port: 3306
