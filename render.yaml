@@ -1,15 +1,15 @@
 services:
-  - name: app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env:
-      - key: PORT
-        value: "3000"
+  - type: web
+    name: app
+    runtime: docker
+    repo: https://github.com/pratikmystery/bitespeed-task.git
 
-  - name: db
-    image: mysql:5.7.24
-    env:
+  - type: pserv
+    name: db
+    runtime: image
+    image: 
+      url: docker.io/mysql:5.7.24
+    envVars:
       - key: MYSQL_DATABASE
         value: test
       - key: MYSQL_USER
@@ -18,13 +18,3 @@ services:
         value: secret
       - key: MYSQL_ROOT_PASSWORD
         value: root
-    ports:
-      - number: 3306
-
-web:
-  - path: app
-    port: $PORT
-
-databases:
-  - name: db
-    port: 3306
