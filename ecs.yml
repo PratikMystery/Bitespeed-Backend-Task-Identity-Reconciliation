@@ -1,9 +1,7 @@
 version: '3'
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: pratikmystery/bitespeed-task-app
     ports:
       - 3000:3000
 
