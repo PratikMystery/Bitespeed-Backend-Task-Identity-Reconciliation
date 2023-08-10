@@ -4,7 +4,7 @@ services:
     runtime: docker
     repo: https://github.com/pratikmystery/bitespeed-task.git
 
-  - type: pserv
+  - type: web
     name: db
     runtime: image
     image: 
